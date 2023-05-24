@@ -5,7 +5,6 @@ import Footer from '../components/footer'
 import { Suspense } from 'react'
 import Loading from './loading'
 import Head from 'next/head'
-import { getSession } from '../../utils/hasSession'
 import { NextAuthProvider } from "./providers";
 
 const inter = Inter({ subsets: ['latin'] })
@@ -20,7 +19,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const session = await getSession()
 
   return (
     <html lang="en">
@@ -32,7 +30,7 @@ export default async function RootLayout({
       <body className={inter.className}>
        <Suspense fallback={<Loading/>}>
          {/* Navbar */}
-         <Navbar session={session}/>
+         <Navbar session={null}/>
         {/* End Navbar */}
 
         {/* Main */}
